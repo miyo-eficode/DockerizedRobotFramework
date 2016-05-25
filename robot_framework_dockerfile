@@ -15,6 +15,7 @@
 # limitations under the License.
 
 FROM debian
+MAINTAINER Eficode/Miyo <miyo@eficode.com>
 
 # In case you need proxy
 #RUN echo 'Acquire::http::Proxy "http://127.0.0.1:8080";' >> /etc/apt/apt.conf
