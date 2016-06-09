@@ -1,18 +1,17 @@
-# Copyright 2016 miyo@eficode.com
-# Copyright 2016 Symbio
-# sakari.hoisko@symbio.com
+#Copyright 2016 Symbio sakari.hoisko@symbio.com
+#Copyright 2016 miyo@eficode.com
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
 #
-# http://www.apache.org/licenses/LICENSE-2.0
+#http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
 
 FROM debian
 MAINTAINER Eficode/Miyo <miyo@eficode.com>
@@ -31,7 +30,7 @@ RUN apt-get -q update &&\
 
 # Install deps
 # RIDE installation requires python-wxgtk2.8 which can be installed from wheezy repo
-RUN echo "deb http://ftp.seclan.com/debian/ wheezy main" >> /etc/apt/sources.list &&\
+RUN echo "deb http://ftp.seclan.com/debian/ wheezy main" >> /etc/apt/sources.list && \
     echo "deb-src http://ftp.seclan.com/debian/ wheezy main" >> /etc/apt/sources.list &&\
     apt-get -q update &&\
     DEBIAN_FRONTEND="noninteractive" apt-get -q install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends openjdk-7-jre python2.7 python-pip python-wxgtk2.8 python-pycryptopp python-paramiko &&\
@@ -40,12 +39,11 @@ RUN echo "deb http://ftp.seclan.com/debian/ wheezy main" >> /etc/apt/sources.lis
 # Robot framework and RIDE installation:
 RUN pip install robotframework robotframework-ride robotframework-sshlibrary
 
-# Set default container SSH user
-ENV SSHUSER=sshuser \
-    SSHUSERPW=sshuserpw \
-    SSHUSERKEY=""
-
-# Add script to container some handle SSH user addition and SSH server
+#Set default container SSH user
+ENV 	SSHUSER=sshuser \
+	SSHUSERPW=sshuserpw \
+	SSHUSERKEY=""
+#Add script to container some handle SSH user addition and SSH server
 COPY rfw_df_entrypoint.sh /
 RUN chmod 755 /rfw_df_entrypoint.sh
 
